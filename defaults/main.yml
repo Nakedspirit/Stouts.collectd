@@ -24,7 +24,7 @@ collectd_hostname: "{{ inventory_hostname }}"
 collectd_fdqnlookup: false
 
 # Collectd plugins
-collectd_plugins: []                # Ex. [nginx, memcached]
+collectd_plugins: [curl_json]                # Ex. [nginx, memcached]
 collectd_plugins_options: {}        # See below for examples.
 
 # Collectd default plugins
