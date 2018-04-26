@@ -70,7 +70,7 @@ LoadPlugin curl_json
   <URL "https://stage.giveback.ru/_stats">
     Instance "httpd"
     {% for key, type in collectd_curl_json_options.items() %}
-    <Key "{{ key }}" 
+    <Key "{{ key }}"> 
         Type "{{ type }}"
     </Key>    
     {% endfor %}
