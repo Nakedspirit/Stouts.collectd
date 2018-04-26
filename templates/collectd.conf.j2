@@ -67,7 +67,7 @@ LoadPlugin curl_json
 
 # Plugin configuration
 <Plugin curl_json>
-  <URL "https://stage.giveback.ru/_stats">
+  <URL "{{url}}">
     Instance "httpd"
     {% for key, type in collectd_curl_json_options.items() %}
     <Key "{{ key }}"> 
