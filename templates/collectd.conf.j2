@@ -63,40 +63,20 @@ LoadPlugin write_graphite
 {% endif %}
 
 {% if collectd_curl_json %}
-# LoadPlugin section curl_json
 LoadPlugin curl_json
 
 # Plugin configuration
-# if you added the keys in _stats, add the same keys here
 <Plugin curl_json>
   <URL "https://stage.giveback.ru/_stats">
     Instance "httpd"
-    <Key "users/total">
-        Type "users_total"
-    </Key>
-    <Key "users/active">
-        Type "users_active"
-    </Key>
-    <Key "users/stale">
-        Type "users_stale"
-    </Key>
-    <Key "companies/total">
-        Type "companies_total"
-    </Key>
-    <Key "npos/total">
-        Type "npos_total"
-    </Key>
-    <Key "posts/30">
-        Type "posts_30"
-    </Key>
-    <Key "comments/30">
-        Type "comments_30"
-    </Key>
+    {% for key, type in collectd_curl_json_options.items() %}
+    <Key "{{ key }}" 
+        Type "{{ type }}"
+    </Key>    
+    {% endfor %}
   </URL>
 </Plugin>
 {% endif %}
-
-
 
 <Include "{{collectd_config_dir}}">
         Filter "*.conf"
